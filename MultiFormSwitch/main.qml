@@ -8,17 +8,20 @@ Window {
     height: 1080
     visible: true
     title: qsTr("多界面切换")
+
     Button{
         id: testBtn
         x: 510
         y: 300
-        width: 100
+        width: 200
         height: 100
         background: Rectangle{
             border.width: 2
-            border.color: "red"
+            color: "gray"
+            //border.color: "red"
         }
-        text: "点点"
+        text: "按钮"
+        font.pixelSize: 24
     }
 
     CustomBorderRec
@@ -30,12 +33,13 @@ Window {
         width : 200
         height: 100
 
-
-        lBorderwidth: 0
+        lBorderwidth: 2
         rBorderwidth: 2
-        tBorderwidth: 2
+        tBorderwidth: 0
         bBorderwidth: 0
         borderColor: "black"
+
+
     }
 
     Rectangle{
@@ -65,6 +69,7 @@ Window {
                 onClicked: {
                     //show new form
                     openFileForm.visible = true
+
                 }
             }
             Button{
@@ -101,6 +106,9 @@ Window {
                     color: menu_About.hovered ? "white": "black"
                     font.pixelSize: 20
                 }
+                onClicked: {
+                    aboutForm.visible = true
+                }
             }
 
         }
@@ -112,6 +120,16 @@ Window {
             height: 350
             visible: false
         }
+    AboutForm {
+        id: aboutForm
+        x: 300
+        y: 600
+        width: 500
+        height: 350
+        visible: false
+
+    }
+
     SysSetting {
         id: sysSettingForm
         anchors.centerIn: parent

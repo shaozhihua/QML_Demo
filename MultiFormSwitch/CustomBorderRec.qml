@@ -1,10 +1,11 @@
 import QtQuick 2.12
+import QtQuick.Controls 2.5
 
 Item
 {
     property alias color: innerRect.color
 
-    property alias borderColor : borderRect.color
+    property alias borderColor : borderBtnBackGround.color
     property int borderWidth: 0
 
     property int lBorderwidth : borderWidth
@@ -12,10 +13,16 @@ Item
     property int tBorderwidth : borderWidth
     property int bBorderwidth : borderWidth
 
-    Rectangle
+    Rectangle{
+        id: borderBtnBackGround
+    }
+
+    Button
     {
-        id: borderRect
+        property alias btnBorderColor: borderBtn
+        id: borderBtn
         anchors.fill: parent
+        background: borderBtnBackGround
 
         Rectangle
         {
@@ -23,7 +30,6 @@ Item
 
             anchors {
                 fill: parent
-
                 leftMargin: lBorderwidth
                 rightMargin: rBorderwidth
                 topMargin: tBorderwidth

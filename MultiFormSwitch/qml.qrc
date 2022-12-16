@@ -4,5 +4,6 @@
         <file>OpenFileForm.qml</file>
         <file>SysSetting.qml</file>
         <file>CustomBorderRec.qml</file>
+        <file>AboutForm.qml</file>
     </qresource>
 </RCC>
