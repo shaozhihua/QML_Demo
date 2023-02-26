@@ -7,6 +7,8 @@ Window {
     color: "#498ff8"
     title: "Base Window"
     flags: Qt.FramelessWindowHint | Qt.Popup
+    width: 640
+    height: 480
     Button{
         id: testBtn
         anchors.centerIn: parent

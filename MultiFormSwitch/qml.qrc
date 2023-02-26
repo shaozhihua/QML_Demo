@@ -5,5 +5,6 @@
         <file>SysSetting.qml</file>
         <file>CustomBorderRec.qml</file>
         <file>AboutForm.qml</file>
+        <file>SubWindowByLoader.qml</file>
     </qresource>
 </RCC>

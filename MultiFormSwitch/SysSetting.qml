@@ -46,6 +46,24 @@ Item {
         width: 500
         height: 500
         border.width: 1
+
+        Button{
+            id: closeBtn
+            anchors.top: parent.top
+            anchors.topMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 20
+
+            width: 60
+            height: 60
+
+            text: qsTr("关闭")
+
+            onClicked: {
+                sysSettingForm.visible = false
+            }
+        }
+
     }
 
 

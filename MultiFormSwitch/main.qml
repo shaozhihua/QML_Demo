@@ -4,6 +4,7 @@ import QtQuick.Controls.Material 2.12
 import QtQuick.Controls 2.5
 
 Window {
+    id: rootWindow
     width: 1920
     height: 1080
     visible: true
@@ -11,24 +12,58 @@ Window {
 
     Button{
         id: testBtn
-        x: 510
-        y: 300
-        width: 200
+        x: 20
+        y: 85
+        width: 280
         height: 100
         background: Rectangle{
             border.width: 2
-            color: "gray"
-            //border.color: "red"
+            color: "lightgreen"
         }
-        text: "按钮"
+        text: testRec.visible ? qsTr("点击关闭部分border按钮") :
+                                qsTr("点击显示部分border按钮")
         font.pixelSize: 24
+        onClicked: {
+            if(!testRec.visible)
+                testRec.visible = true
+            else
+                testRec.visible = false
+        }
     }
 
-    CustomBorderRec
-    {
+    Loader{
+            id:myLoader
+            anchors.centerIn: parent // 弹出的界面都居中显示
+            //source: "SubWindowByLoader.qml"
+        }
+
+
+    Button{
+        id: loaderTestBtn
+        anchors.left: testBtn.left
+        anchors.top: testBtn.bottom
+        anchors.topMargin: 30
+
+        width: 280
+        height: 100
+
+        background: Rectangle{
+            border.width: 2
+            color: "lightgreen"
+        }
+        text: SubWindowByLoader ? qsTr("点击开启Loader界面") :
+                                qsTr("点击关闭Loader界面")
+        font.pixelSize: 24
+        onClicked: {
+            //加载loader界面
+            myLoader.source = "SubWindowByLoader.qml"
+        }
+    }
+
+    CustomBorderRec{
         id: testRec
         anchors.left: testBtn.right
-        anchors.leftMargin: 40
+        anchors.leftMargin: 50
         anchors.top: testBtn.top
         width : 200
         height: 100
@@ -37,7 +72,8 @@ Window {
         rBorderwidth: 2
         tBorderwidth: 0
         bBorderwidth: 0
-        borderColor: "black"
+        borderColor: "red"
+
 
 
     }
@@ -122,14 +158,10 @@ Window {
         }
     AboutForm {
         id: aboutForm
-        x: 300
-        y: 600
-        width: 500
-        height: 350
+        x: rootWindow.width / 2 - aboutForm.width / 2
+        y: 300
         visible: false
-
     }
-
     SysSetting {
         id: sysSettingForm
         anchors.centerIn: parent
@@ -138,5 +170,9 @@ Window {
         visible: false
     }
 
+
+    Component.onCompleted: {
+        showMaximized()
+    }
 
 }

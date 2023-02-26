@@ -6,8 +6,6 @@ int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    //为了防止一些警告
-    QCoreApplication::setOrganizationName("Some organization");
 #endif
 
     QGuiApplication app(argc, argv);
